@@ -8,7 +8,7 @@ import { dbConnect } from "./Config/mongodb.js"
 dotenv.config()
 
 const app = express()
-// const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -19,13 +19,10 @@ dbConnect()
 app.use("/api", authRoute)
 
 
-app.post("/createpost", (request, response) => {
-    response.json({
-        message: "Post Created",
-        status: true
-    })
+app.get("/", (request, response) => {
+    response.send("Welcome to Hackathon Backend API")
 })
 
 
 
-// app.listen(PORT, () => console.log(`server running on 3000`))
+app.listen(PORT, () => console.log(`server running on 3000`))
