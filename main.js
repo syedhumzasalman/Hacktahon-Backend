@@ -19,5 +19,13 @@ dbConnect()
 app.use("/api", authRoute)
 
 
+app.post("/createpost", (request, response) => {
+    response.json({
+        message: "Post Created",
+        status: true
+    })
+})
+
+
 
 app.listen(PORT, () => console.log(`server running on 3000`))

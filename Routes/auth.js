@@ -14,12 +14,6 @@ authRoute.post("/reset-otp", resetOtpController)
 
 
 
-authRoute.post("/createuser", authMiddleware, (request, response) => {
-    response.json({
-        message: "Post Created",
-        status: true
-    })
-})
 
 
 
