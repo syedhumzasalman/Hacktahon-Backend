@@ -49,8 +49,12 @@ export const signupController = async (request, response) => {
         // console.log('userResponse', userResponse);
 
 
-        // sent verification email ****
-        sentEmail({ email: body.email, name: body.firstName, otp: otp })
+        // sent verification email ****\
+        try {
+            await sentEmail({ email: body.email, name: body.firstName, otp: otp })
+        } catch (error) {
+            console.log("Error sending email:", error);
+        }
         // console.log(otp);
 
 
