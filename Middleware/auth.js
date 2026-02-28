@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 export const authMiddleware = (request, response, next) => {
 
     try {
-        const PRIVATE_KEY = "H@MZA2026"
+        const PRIVATE_KEY = process.env.SECRET_KEY
         const token = request?.headers?.authorization?.split(" ")[1]
         console.log(token);
 

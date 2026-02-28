@@ -1,23 +1,18 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema({
-    firstName: {
+const DoctorSchema = new mongoose.Schema({
+    name: {
         type: String,
-        required: [true, "First name is required"]
+        required: [true, "Name is required"]
     },
-    lastName: {
-        type: String,
-        required: [true, "Last name is required"]
+    specialization: {
+         type: String,
+        required: [true, "specialization is required"]
     },
-    age: {
-        type: Number,
-        required: [true, "Age is required"],
-        min: [18, "Age must be greater than 18"]
-    },
-    role: {
+     role: {
         type: String,
         enum: ["admin", "doctor", "receptionist", "patient"],
-        default: "patient",
+        default: "doctor",
     },
     email: {
         type: String,
@@ -30,15 +25,12 @@ const UserSchema = new mongoose.Schema({
         required: [true, "Password is required"],
         minlength: [6, "Password must be at least 6 characters long"]
     },
-    isVerify: {
-        type: Boolean,
-        default: false
-    }
+    
 
 }, { timestamps: true })
 
 
-const userModel = mongoose.model("user", UserSchema)
-userModel.init();
+const doctorModel = mongoose.model("doctor", DoctorSchema)
+doctorModel.init();
 
-export default userModel
+export default doctorModel

@@ -3,6 +3,7 @@ import cors from "cors"
 import dotenv from 'dotenv'
 import authRoute from "./Routes/auth.js"
 import { dbConnect } from "./Config/mongodb.js"
+import adminRoute from "./Routes/admin.js"
 
 
 dotenv.config()
@@ -17,6 +18,7 @@ dbConnect()
 
 
 app.use("/api", authRoute)
+app.use("/api", adminRoute)
 
 
 app.get("/", (request, response) => {

@@ -130,6 +130,7 @@ export const loginController = async (request, response) => {
             lastName: findUser.lastName,
             age: findUser.age,
             email: findUser.email,
+            role: findUser.role,
             createdAt: findUser.createdAt,
             updatedAt: findUser.updatedAt,
         }
@@ -137,11 +138,11 @@ export const loginController = async (request, response) => {
         // console.log(userDetails);
 
         // Create Json web token
-        const data = { _id: findUser._id }
+        const data = { _id: findUser._id, role: findUser.role }
         const PRIVATE_KEY = process.env.SECRET_KEY
         const token = jwt.sign(data, PRIVATE_KEY, { expiresIn: "24h", });
 
-        console.log("token", token);
+        // console.log("token", token);
 
         response.json({
             message: "User Successfully Login",
